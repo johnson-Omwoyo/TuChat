@@ -1,6 +1,16 @@
 const express = require("express");
 const mysql = require("mysql2");
 const cors = require("cors");
+const Messages = require("./models/message");
+const tables = require("./models/tableQueries");
+const Conversation = require("./models/conversation");
+const User = require("./models/user");
+const Notification = require("./models/notifications");
+const ConversationMember = require("./models/conversation_members");
+const Friendship = require("./models/friendships");
+const MessageStatus = require("./models/message_status");
+const Message = require("./models/message");
+const { where } = require("sequelize");
 require("dotenv").config();
 
 const app = express();
@@ -14,7 +24,7 @@ app.use(express.json());
 const db = mysql.createConnection({
   host: "localhost",
   user: "root", // Your MySQL username
-  password: "", // Your MySQL password
+  password: "my_password", // Your MySQL password
   database: "tuchat_db", // Your database name
 });
 
@@ -24,101 +34,112 @@ db.connect((err) => {
     console.error("Database connection failed:", err);
   } else {
     console.log("Connected to MySQL database!");
-    createTables(); // Call function to create tables
+    // createTables(); // Call function to create tables
   }
 });
 
 // Function to create tables if they don't exist
-function createTables() {
-  const tables = [
-    `CREATE TABLE IF NOT EXISTS users (
-      id INT AUTO_INCREMENT PRIMARY KEY,
-      name VARCHAR(255) NOT NULL,
-      email VARCHAR(255) UNIQUE NOT NULL,
-      password VARCHAR(255) NOT NULL,
-      avatar VARCHAR(255) DEFAULT NULL,
-      status ENUM('online', 'offline') DEFAULT 'offline',
-      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-      updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-    )`,
+// function createTables() {
+//   // Execute each table creation query
+//   tables.forEach((query) => {
+//     db.query(query, (err, result) => {
+//       if (err) {
+//         console.error("Error creating table:", err);
+//       } else {
+//         console.log("Table created or already exists.");
+//       }
+//     });
+//   });
+// }
 
-    `CREATE TABLE IF NOT EXISTS conversations (
-      id INT AUTO_INCREMENT PRIMARY KEY,
-      type ENUM('private', 'group') NOT NULL,
-      name VARCHAR(255) DEFAULT NULL,
-      created_by INT NOT NULL,
-      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-      FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE CASCADE
-    )`,
-
-    `CREATE TABLE IF NOT EXISTS conversation_members (
-      id INT AUTO_INCREMENT PRIMARY KEY,
-      conversation_id INT NOT NULL,
-      user_id INT NOT NULL,
-      joined_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-      FOREIGN KEY (conversation_id) REFERENCES conversations(id) ON DELETE CASCADE,
-      FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-    )`,
-
-    `CREATE TABLE IF NOT EXISTS messages (
-      id INT AUTO_INCREMENT PRIMARY KEY,
-      conversation_id INT NOT NULL,
-      sender_id INT NOT NULL,
-      content TEXT NOT NULL,
-      message_type ENUM('text', 'image', 'video', 'file') DEFAULT 'text',
-      file_url VARCHAR(255) DEFAULT NULL,
-      sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-      FOREIGN KEY (conversation_id) REFERENCES conversations(id) ON DELETE CASCADE,
-      FOREIGN KEY (sender_id) REFERENCES users(id) ON DELETE CASCADE
-    )`,
-
-    `CREATE TABLE IF NOT EXISTS message_status (
-      id INT AUTO_INCREMENT PRIMARY KEY,
-      message_id INT NOT NULL,
-      user_id INT NOT NULL,
-      status ENUM('sent', 'delivered', 'read') DEFAULT 'sent',
-      updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-      FOREIGN KEY (message_id) REFERENCES messages(id) ON DELETE CASCADE,
-      FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-    )`,
-
-    `CREATE TABLE IF NOT EXISTS friendships (
-      id INT AUTO_INCREMENT PRIMARY KEY,
-      sender_id INT NOT NULL,
-      receiver_id INT NOT NULL,
-      status ENUM('pending', 'accepted', 'rejected') DEFAULT 'pending',
-      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-      FOREIGN KEY (sender_id) REFERENCES users(id) ON DELETE CASCADE,
-      FOREIGN KEY (receiver_id) REFERENCES users(id) ON DELETE CASCADE
-    )`,
-
-    `CREATE TABLE IF NOT EXISTS notifications (
-      id INT AUTO_INCREMENT PRIMARY KEY,
-      user_id INT NOT NULL,
-      message VARCHAR(255) NOT NULL,
-      type ENUM('message', 'friend_request', 'group_invite') NOT NULL,
-      status ENUM('unread', 'read') DEFAULT 'unread',
-      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-      FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-    )`,
-  ];
-
-  // Execute each table creation query
-  tables.forEach((query) => {
-    db.query(query, (err, result) => {
-      if (err) {
-        console.error("Error creating table:", err);
-      } else {
-        console.log("Table created or already exists.");
-      }
-    });
+//User routes
+app.get("/users", async (req, res) => {
+  const users = await User.findAll({
+    attributes: ["name", "email", "avatar", "status"],
   });
-}
+  // console.log(users);
 
-// Sample Route
-app.get("/", (req, res) => {
-  res.send("Hello, TuChat Server is Running!");
+  res.send(users);
 });
+app.get("/user", async (req, res) => {
+  const { email } = req.body;
+  try {
+    const user = await User.findOne({ where: { email: email } });
+    if (user) {
+      res.send(user);
+    } else {
+      res.send("Invalid email");
+    }
+  } catch (error) {
+    res.send("error getting user");
+  }
+});
+
+app.post("/user", (req, res) => {
+  const user = new User();
+  const name = "Alice";
+  const email = "aliceTrial@gmail.com";
+  const password = "asasas";
+  const avatar = "";
+  const status = "offline";
+
+  try {
+    User.create({ name, email, password, avatar, status });
+    res.send("added");
+  } catch (error) {
+    res.send("something went wrong when adding a user");
+  }
+});
+
+// message Routes
+app.get("/", (req, res) => {
+  const messages = Messages.findAll({
+    attributes: { exclude: ["createdAt", "updatedAt"] },
+  });
+  res.send(messages);
+});
+app.post("/", (req, res) => {
+  const message = new Messages(2, 2, "thanks", "text", "none", 1010);
+  Messages.create(message);
+  res.send("want to add some data");
+});
+app.get("/conversations", (req, res) => {
+  const conversations = Conversation.findAll();
+  res.send(conversations);
+});
+
+// notification route
+
+app.get("/notifications", (req, res) => {
+  const notifications = Notification.findAll({ attributes: [""] });
+  res.send(notifications);
+});
+
+// conversation members routes
+app.get("/conversation_members", (req, res) => {
+  const conversation_members = ConversationMember.findAll();
+  res.send(conversation_members);
+});
+
+// conversation members routes
+app.get("/conversation_members", (req, res) => {
+  const conversation_members = ConversationMember.findAll();
+  res.send(conversation_members);
+});
+
+// friendships routes
+app.get("/conversation_members", (req, res) => {
+  const friendships = Friendship.findAll();
+  res.send(conversation_members);
+});
+
+// message status routes
+app.get("/conversation_members", (req, res) => {
+  const conversation_members = ConversationMember.findAll();
+  res.send(conversation_members);
+});
+
+const message = Message.findAll();
 
 // Start Server
 app.listen(PORT, () => {
