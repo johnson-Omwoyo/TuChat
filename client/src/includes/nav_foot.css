@@ -1,0 +1,50 @@
+/* Navbar */
+.navbar {
+    width: 100%;
+    padding: 15px 0;
+}
+
+/* Footer */
+.footer {
+    background-color: #1a1a2e; /* Deep navy blue for a sleek look */
+    color: #f1f1f1; /* Light text for contrast */
+    padding: 20px 0; /* Add some spacing */
+    text-align: center; /* Center align text */
+    font-size: 14px; /* Keep it subtle */
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); /* Soft top shadow */
+}
+
+.footer p {
+    margin: 0;
+    font-weight: 300;
+}
+
+.footer a {
+    color: #00a8ff; /* Bright blue for links */
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer a:hover {
+    color: #0097e6; /* Slightly darker blue on hover */
+}
+
+.footer-links .footer-link {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 14px;
+}
+
+.footer-links .footer-link:hover {
+    text-decoration: underline;
+}
+
+.social-icons a {
+    color: #007bff;
+    font-size: 20px;
+    margin: 0 10px;
+}
+
+.social-icons a:hover {
+    color: #0056b3;
+}
