@@ -33,7 +33,7 @@ const Navbar = () => {
           <ul className="navbar-nav d-flex  w-100  gap-md-4">
             <div className=" d-flex gap-4  gap-md-5  ms-md-auto align-items-center mt-4 m-md-0  ">
               <li
-                className={`nav-item  rounded-circle nav-link text-center ${
+                className={`nav-item  rounded-circle nav-link text-center position-relative ${
                   selected == "/" && "selected" && "bg-primary"
                 }`}
                 onClick={() => handlePage("/")}
@@ -43,9 +43,12 @@ const Navbar = () => {
                     selected == "/" && "text-white"
                   }`}
                 ></i>
+                <div className="nav-label position-absolute mt-1 start-0 bg-secondary px-1 rounded text-white">
+                  Home
+                </div>
               </li>
               <li
-                className={`nav-item nav-link  rounded-circle text-center ${
+                className={`nav-item nav-link  rounded-circle text-center position-relative ${
                   selected == "message" && "selected" && "bg-primary"
                 }`}
                 onClick={() => handlePage("/message")}
@@ -55,9 +58,12 @@ const Navbar = () => {
                     selected == "/message" && "text-white"
                   }`}
                 ></i>
+                <div className="nav-label position-absolute mt-1 start-0 bg-secondary px-1 rounded text-white">
+                  Chat
+                </div>
               </li>
               <li
-                className={`nav-item nav-link rounded-circle text-center ${
+                className={`nav-item nav-link rounded-circle text-center position-relative ${
                   selected == "users" && "selected" && "bg-primary"
                 }`}
                 onClick={() => handlePage("users")}
@@ -67,9 +73,12 @@ const Navbar = () => {
                     selected == "/users" && "text-white"
                   }`}
                 ></i>
+                <div className="nav-label position-absolute mt-1 start-0 bg-secondary px-1 rounded text-white">
+                  Users
+                </div>
               </li>
               <li
-                className={`nav-item  rounded-circle nav-link text-center ${
+                className={`nav-item  rounded-circle nav-link text-center position-relative ${
                   selected == "/features" && "selected" && "bg-primary"
                 }`}
                 onClick={() => handlePage("features")}
@@ -79,6 +88,9 @@ const Navbar = () => {
                     selected == "/features" && "text-white"
                   }`}
                 ></i>
+                <div className="nav-label position-absolute mt-1 start-0 bg-secondary px-1 rounded text-white">
+                  About
+                </div>
               </li>
               <li className="get-started d-inline d-md-none">
                 <Link className="btn btn-primary" to="/register">

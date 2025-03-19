@@ -19,6 +19,13 @@
 .get-started {
   font-family: "Orbitron", sans-serif;
 }
+.nav-label {
+  opacity: 0;
+  transition: all 0.5s;
+}
+.nav-item .fs-5:hover + .nav-label {
+  opacity: 1;
+}
 /* Footer */
 .footer {
   background-color: #1a1a2e; /* Deep navy blue for a sleek look */
