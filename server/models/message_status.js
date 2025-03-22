@@ -39,10 +39,10 @@ const MessageStatus = sequelize.define("message_status", {
 });
 MessageStatus.sync()
   .then(() => {
-    console.log("ms sync success");
+    console.log("✅ ms sync success");
   })
   .catch(() => {
-    console.log("ms sync failed");
+    console.log("❌ ms sync failed");
   });
 
 module.exports = MessageStatus;

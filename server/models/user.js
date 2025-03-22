@@ -46,10 +46,10 @@ const User = sequelize.define(
 );
 User.sync()
   .then(() => {
-    console.log("user sync success");
+    console.log("✅ user sync success");
   })
   .catch(() => {
-    console.log("user sync failed");
+    console.log("❌ user sync failed");
   });
 
 module.exports = User;

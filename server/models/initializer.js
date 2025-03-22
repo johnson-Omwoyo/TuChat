@@ -1,17 +1,14 @@
 const { Sequelize } = require("sequelize");
 
-const sequelize = new Sequelize("tuchat_db", "root", "my_password", {
+const sequelize = new Sequelize("tuchat_db", "root", "", {
   host: "localhost",
   dialect: "mysql",
+  logging: console.log, // ✅ Shows executed SQL queries
 });
 
 sequelize
   .authenticate()
-  .then(() => {
-    console.log("connected");
-  })
-  .catch(() => {
-    console.log("some error");
-  });
+  .then(() => console.log("✅ Connected to MySQL"))
+  .catch((err) => console.error("❌ Connection failed:", err));
 
-module.exports = sequelize ;
+module.exports = sequelize;

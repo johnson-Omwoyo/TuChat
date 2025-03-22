@@ -41,10 +41,10 @@ const Notification = sequelize.define(
 );
 Notification.sync()
   .then(() => {
-    console.log("notification sync success");
+    console.log("✅ notification sync success");
   })
   .catch(() => {
-    console.log("notification sync failed");
+    console.log("❌ notification sync failed");
   });
 
 module.exports = Notification;

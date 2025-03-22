@@ -1,6 +1,10 @@
+### **📌 Updated TuChat Frontend**
+```md
 # 🚀 TuChat Frontend
 
-This is the **frontend** of **TuChat Chatting app**, built using **React & Bootstrap**. The frontend is responsible for rendering the chat UI, displaying messages, and handling real-time interactions.
+This is the **frontend** of **TuChat Chatting App**, built using **React & Bootstrap**. The frontend handles user authentication, chat UI, and real-time messaging.
+
+---
 
 ## 📌 Features Implemented
 ### ✅ **Landing Page**
@@ -13,17 +17,24 @@ This is the **frontend** of **TuChat Chatting app**, built using **React & Boots
 - Describes key **features** (real-time chat, animations, security, etc.).
 - Uses **icons & animations** to enhance user experience.
 
-### ✅ **Login & Register**
-- **User authentication UI** with forms for login & sign-up.
-- Input validation for email & password fields.
+### ✅ **User Authentication**
+- **Login & Registration system** with proper UI.
+- **Email verification** to enhance security and prevent fake accounts.  
+- **Password validation**: Must have at least **6 characters, 1 digit, 1 uppercase, 1 lowercase, and 1 special character**.
 - Styled with **Bootstrap** for a clean and minimal look.
+
+### ✅ **State Management & Navigation**
+- Uses **React Hooks** (`useState`, `useEffect`, `useNavigate`) for state and navigation.
+- **Success & error messages** for authentication feedback.
 
 ---
 
 ## 📌 Tech Stack
 - **React** - Frontend framework
+- **React Router** - Page navigation
 - **Bootstrap** - UI styling
 - **CSS Animations** - Smooth transitions & effects
+- **Axios** - API requests
 
 ---
 
@@ -32,9 +43,9 @@ This is the **frontend** of **TuChat Chatting app**, built using **React & Boots
 - Implement **WebSockets** (Socket.io) for **real-time messaging**.
 - Sync messages across **multiple users/devices**.
 
-### 🔲 **User Authentication Integration**
-- Integrating **login/signup** system.
-- Implement **user profiles** (name, avatar, etc.).
+### 🔲 **User Authentication Improvements**
+- Add **password reset functionality** via email.
+- Implement **OAuth login** (Google, Facebook, etc.).
 
 ### 🔲 **Database Integration**
 - Connect to a backend to **store messages**.
@@ -75,3 +86,14 @@ If you want to contribute, fork the repo and create a **pull request**. Suggesti
 
 ## 📜 License
 MIT License - Feel free to use and modify the project.
+```
+
+---
+
+### **🛠️ What's Updated?**
+✅ **Added email verification as a feature.**  
+✅ **Mentioned password validation rules.**  
+✅ **Included React Router, Axios, and Hooks in the tech stack.**  
+✅ **Updated "What's Left To Do" with password reset & OAuth login.**  
+
+---

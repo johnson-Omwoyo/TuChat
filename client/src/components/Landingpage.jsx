@@ -42,6 +42,7 @@ const LandingPage = () => {
                 </Link>
               </div>
             </div>
+
             <div className="hero-animation fade-in container">
               <div className="row gap-5 text-center d-flex justify-content-center">
                 <div className="feature-item col-5">
@@ -80,6 +81,7 @@ const LandingPage = () => {
             </div>
           </div>
         </div>
+
       </div>
 
       <Footer />

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./nav_foot.css";
 
 const Footer = () => {
+
   return (
     <div className="container-fluid bg-dark text-white text-center">
       <div className="row p-5">
@@ -51,6 +52,7 @@ const Footer = () => {
       </div>
     </div>
   );
+
 };
 
 export default Footer;

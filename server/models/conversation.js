@@ -34,10 +34,10 @@ const Conversation = sequelize.define("conversations", {
 });
 Conversation.sync()
   .then(() => {
-    console.log("conversation sync success");
+    console.log("✅ conversation sync success");
   })
   .catch(() => {
-    console.log("conversation sync failed");
+    console.log("❌ conversation sync failed");
   });
 
 module.exports = Conversation;
