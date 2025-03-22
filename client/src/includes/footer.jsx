@@ -4,7 +4,7 @@ import "./nav_foot.css";
 
 const Footer = () => {
     return (
-        <footer className="footer text-center mt-5 py-4">
+        <footer className="footer justify-content-between mt-5 py-4">
             <div className="container">
                 {/* Footer Branding */}
                 <h5 className="fw-bold">TuChat</h5>

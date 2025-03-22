@@ -16,7 +16,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg bg-white shadow-sm py-4 ">
+    <nav className="navbar navbar-expand-lg bg-white shadow-sm py-4 sticky-top">
       <div className="container ">
         <Link className="navbar-brand fw-bold tuchat-logo fs-4" to="/">
           TuChat
