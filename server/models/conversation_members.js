@@ -35,9 +35,9 @@ const ConversationMember = sequelize.define("conversation_members", {
 
 ConversationMember.sync()
   .then(() => {
-    console.log("conversation member sync success");
+    console.log("✅ conversation member sync success");
   })
   .catch(() => {
-    console.log("conversation member sync failed");
+    console.log("❌ conversation member sync failed");
   });
 module.exports = ConversationMember;

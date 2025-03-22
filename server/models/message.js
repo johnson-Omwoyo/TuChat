@@ -47,10 +47,10 @@ const Message = sequelize.define("messages", {
 });
 Message.sync()
   .then(() => {
-    console.log("message sync success");
+    console.log("✅ message sync success");
   })
   .catch(() => {
-    console.log("message sync failed");
+    console.log("❌ message sync failed");
   });
 
 module.exports = Message;

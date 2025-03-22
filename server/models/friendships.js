@@ -38,10 +38,10 @@ const Friendship = sequelize.define("friendships", {
 });
 Friendship.sync()
   .then(() => {
-    console.log("friendship sync success");
+    console.log("✅ friendship sync success");
   })
   .catch(() => {
-    console.log("friendship sync failed");
+    console.log("❌ friendship sync failed");
   });
 
 module.exports = Friendship;
