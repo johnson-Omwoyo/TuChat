@@ -17,6 +17,14 @@ const User = sequelize.define(
       unique: true,
       allowNull: true,
     },
+    email_verified: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false, // New users are unverified by default
+    },
+    verification_token: {
+      type: DataTypes.STRING(255),
+      allowNull: true, // Can be null after verification
+    },
     password: {
       type: DataTypes.STRING(255),
       allowNull: true,
@@ -37,13 +45,14 @@ const User = sequelize.define(
     updated_at: {
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW,
-      onUpdate: DataTypes.NOW, // Reflects the ON UPDATE behavior
+      onUpdate: DataTypes.NOW,
     },
   },
   {
     timestamps: false, // Prevent Sequelize from adding its own createdAt and updatedAt
   }
 );
+
 User.sync()
   .then(() => {
     console.log("✅ user sync success");
