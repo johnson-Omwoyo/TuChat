@@ -44,3 +44,48 @@ export const getUserProfile = async () => {
     throw error;
   }
 };
+
+
+// Verify Email
+export const verifyEmail = async (token) => {
+  try {
+    const response = await axios.get(`${API_URL}/user/verify/${token}`);
+    return response.data;
+  } catch (error) {
+    console.error("Email verification failed:", error.response?.data || error.message);
+    throw error;
+  }
+};
+
+// Resend Verification Email
+export const resendVerificationEmail = async (email) => {
+  try {
+    const response = await axios.post(`${API_URL}/user/resend-verification`, { email });
+    return response.data;
+  } catch (error) {
+    console.error("Resending verification email failed:", error.response?.data || error.message);
+    throw error;
+  }
+};
+
+// Forgot Password (Request Reset Link)
+export const requestPasswordReset = async (email) => {
+  try {
+    const response = await axios.post(`${API_URL}/user/forgot-password`, { email });
+    return response.data;
+  } catch (error) {
+    console.error("Forgot password request failed:", error.response?.data || error.message);
+    throw error;
+  }
+};
+
+// Reset Password (Set New Password)
+export const resetPassword = async (token, newPassword) => {
+  try {
+    const response = await axios.post(`${API_URL}/user/reset-password`, { token, newPassword });
+    return response.data;
+  } catch (error) {
+    console.error("Password reset failed:", error.response?.data || error.message);
+    throw error;
+  }
+};

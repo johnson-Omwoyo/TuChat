@@ -1,0 +1,36 @@
+/* Ensure full height */
+.container-fluid {
+    height: 100vh;
+  }
+  
+  /* Hide Sidebar on Small Screens */
+  @media (max-width: 768px) {
+    .main-container {
+      display: none; /* Hide sidebar on small screens */
+    }
+  }
+  
+  /* Adjust Right-Side Content Width */
+  @media (max-width: 768px) {
+    .right-side-content {
+      width: 100% !important; /* Take full width on small screens */
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .right-side-content {
+      width: 320px !important; /* Keep fixed width for larger screens */
+    }
+  }
+  
+  /* Navbar Responsiveness */
+  @media (max-width: 576px) {
+    .navbar .navbar-brand {
+      font-size: 1rem; /* Reduce brand size on small screens */
+    }
+    .navbar .fa-bell,
+    .navbar .fa-user-circle {
+      font-size: 1rem; /* Adjust icon sizes */
+    }
+  }
+  

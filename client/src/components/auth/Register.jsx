@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import for redirection
-import Navbar from "../includes/navbar";
-import Footer from "../includes/footer";
+import Navbar from "../../includes/navbar";
+import Footer from "../../includes/footer";
 import { Link } from "react-router-dom";
-import { registerUser } from "../api"; // Import API function
-import "./../styles/auth.css";
+import { registerUser } from "../../api"; // Import API function
+import "./../../styles/auth.css";
 
 const Register = () => {
   const [formData, setFormData] = useState({ name: "", email: "", password: "" });
@@ -73,12 +73,10 @@ const Register = () => {
     try {
       const data = await registerUser(formData);
       console.log("User Registered:", data);
-      setSuccess("Registration successful! Redirecting to login...");
+      setSuccess("Registration successful Step 1 ! Check your email for verification.");
 
-      // Redirect to login page after 3 seconds
-      setTimeout(() => {
-        navigate("/login");
-      }, 3000);
+      //redirect to login with a 5 second countdown effect.
+
     } catch (error) {
       setError(error.response?.data?.message || "Registration failed. Try again.");
     }
