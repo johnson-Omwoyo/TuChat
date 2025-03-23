@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import LandingPage from "./components/LandingPage";
+import LandingPage from "./components/Landingpage";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Features from "./components/Features";
@@ -8,7 +8,7 @@ import Verify from "./components/auth/Verify";
 import Resend from "./components/auth/Resend";
 import Password from "./components/auth/Password";  // Forgot Password Page
 import ResetPassword from "./components/auth/Resetpassword"; // Password Reset Page
-import Logout from "./components/auth/logout"; // Logout Handling
+import Logout from "./components/auth/Logout"; // Logout Handling
 import Home from "./components/dashboard/home";
 
 function App() {
