@@ -26,6 +26,10 @@
 .hero .highlight {
   color: #007bff;
 }
+.ingia-tuchat {
+  font-family: "Roboto", sans-serif;
+  color: rgb(162, 158, 158);
+}
 
 .hero .tuchat-brand {
   font-weight: bold;
@@ -241,4 +245,3 @@
     top: 30%;
   }
 }
-
