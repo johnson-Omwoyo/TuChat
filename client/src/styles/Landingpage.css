@@ -46,6 +46,12 @@
   animation: fadeIn 1.5s ease-in forwards 0.3s;
 }
 
+.hero-header {
+  font-family: "Prompt", sans-serif;
+  line-height: 150%;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
 /* CTA Buttons */
 .cta-buttons {
   margin-top: 20px;
