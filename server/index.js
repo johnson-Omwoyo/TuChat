@@ -36,11 +36,6 @@ const db = mysql.createPool({
   queueLimit: 0,
 });
 
-// Sequelize Connection
-const sequelize = new Sequelize("tuchat_db", "root", "", {
-  host: "localhost",
-  dialect: "mysql",
-});
 
 // Function to create tables if they don't exist
 async function createTables() {
