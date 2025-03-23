@@ -5,6 +5,7 @@ import Footer from "../includes/footer";
 import Chatui from "../assets/chart-ui.jpg";
 import "./../styles/Landingpage.css";
 import ChatIllustration from "../assets/chatillustration.jpg";
+import { FaBolt, FaLock, FaSmile } from "react-icons/fa";
 
 const LandingPage = () => {
   return (
