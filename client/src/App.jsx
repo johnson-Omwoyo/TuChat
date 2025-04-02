@@ -10,7 +10,7 @@ import Password from "./components/auth/Password"; // Forgot Password Page
 import ResetPassword from "./components/auth/Resetpassword"; // Password Reset Page
 import Logout from "./components/auth/Logout"; // Logout Handling
 import Home from "./components/dashboard/home";
-import ChatPage from "./components/dashboard/ChatPage";
+
 import Chatpage from "./components/chatpage/Chatpage";
 
 function App() {
