@@ -6,10 +6,12 @@ import Register from "./components/auth/Register";
 import Features from "./components/Features";
 import Verify from "./components/auth/Verify";
 import Resend from "./components/auth/Resend";
-import Password from "./components/auth/Password";  // Forgot Password Page
+import Password from "./components/auth/Password"; // Forgot Password Page
 import ResetPassword from "./components/auth/Resetpassword"; // Password Reset Page
 import Logout from "./components/auth/Logout"; // Logout Handling
 import Home from "./components/dashboard/home";
+import ChatPage from "./components/dashboard/ChatPage";
+import Chatpage from "./components/chatpage/Chatpage";
 
 function App() {
   return (
@@ -27,9 +29,11 @@ function App() {
         <Route path="/forgot-password" element={<Password />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/logout" element={<Logout />} />
+        <Route path="/chat-page" element={<Chatpage />} />
 
         {/* Dashboard Routes */}
         <Route path="/home" element={<Home />} />
+      
 
         {/* Admin Routes */}
       </Routes>
