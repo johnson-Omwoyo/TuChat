@@ -1,0 +1,64 @@
+.chat-navs {
+  list-style-type: none;
+}
+.chat-nav {
+  background: #0dcaf0;
+  min-height: 100vh;
+}
+.chat-navs li {
+  font-family: "Roboto";
+  padding: 10px;
+  font-weight: 500;
+}
+.selected {
+  background: #3f8ae0;
+  color: white;
+
+}
+.main-column .tuchat {
+  font-family: "Orbitron";
+  color: rgb(0, 3, 167);
+  font-weight: 700;
+}
+.chat-div {
+  background: #e0f3f7;
+}
+.online-avatars {
+  overflow-x: scroll;
+}
+.online-avatars::-webkit-scrollbar {
+  display: none;
+}
+.my-message {
+  background: #3f8ae0;
+  color: white;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  max-width: 60%;
+  width: max-content;
+}
+.other-message {
+  background: #1bc2e3;
+  color: black;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  width: max-content;
+  max-width: 60%;
+}
+.timer {
+  font-size: 14px;
+}
+.prev-chat::-webkit-scrollbar {
+  display: none;
+}
+.peer-name {
+  font-family: "Roboto";
+  margin-bottom: -8px;
+  font-weight: 500;
+}
+.selected-nav-icon{
+  color:white;
+  background: #000;
+}
